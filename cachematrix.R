@@ -5,7 +5,6 @@
 
 makeCacheMatrix <- function(x = matrix()) {
   s <- NULL
-  changed <- FALSE
   set <- function(y) {
     if(!is.null(x) && is.matrix(y) && ncol(x) == ncol(y) && nrow(x) == nrow(y)){
       
