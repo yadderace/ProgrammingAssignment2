@@ -1,20 +1,26 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Crea a matrix and save the original and inverse matrix, return a list of functions
+## Create a matrix and save the original and inverse matrix, return a list of functions.
+## When the set function is executed, first evualuate the new matrix with the previous matrix to know if they are
+## the same
 
 makeCacheMatrix <- function(x = matrix()) {
   s <- NULL
   set <- function(y) {
+    ##Verify that the new matrix and the previous matrix have the same number of columns and rows
     if(!is.null(x) && is.matrix(y) && ncol(x) == ncol(y) && nrow(x) == nrow(y)){
       
+      ##Verify the data in both matrix
       for(idx in 1:ncol(x)){
         for(jdx in 1:nrow(x)){
+          ##If the data are not the same, so set null to solved matrix.
           if(x[jdx,idx] != y[jdx,idx]){
             s <<- NULL
             break
           }
         }
+        ##If it is null break the for loop
         if(is.null(s))
           break
       }
@@ -22,6 +28,7 @@ makeCacheMatrix <- function(x = matrix()) {
     }else{
       s <<- NULL
     }
+    
     x <<- y
   }
   get <- function() x
